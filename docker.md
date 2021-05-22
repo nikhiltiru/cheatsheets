@@ -70,6 +70,11 @@ Note: Use this only for development. This configuration might lead to security o
 
   `docker start -a -i <container id>`
 
+- enter a running container from another terminal
+  
+  `docker exec -u ubuntu -it container_id bash`
+  
+
 ### Images
 
 - List Images
