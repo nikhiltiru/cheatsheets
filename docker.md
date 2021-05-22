@@ -10,7 +10,7 @@ Note: Use this only for development. This configuration might lead to security o
 
 - run with gpu
 
-  `docker run -u ubuntu --gpus all -v $PWD:/home/ubuntu -it <image_id> bash`
+  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -it <image_id> bash`
 
   Here, 
 
@@ -18,6 +18,7 @@ Note: Use this only for development. This configuration might lead to security o
   - "-it" lets you use the container interactively. Else it will just run in the background.
   - -v $PWD:/home/ubuntu mounts your current working directory to /home/ubuntu and you will be able to access the files in your $PWD inside the container. This is what I do. Otherwise you will have to copy files to and from the docker container which will unnecessarily waste storage. Also, you will be able to access the files created inside the container from your host OS even after the container is killed/removed. To mount some other volume, do: -v /home/user/some/path:/home/container/path
   - "--gpus all" will expose the gpus on the host to the container. 
+  - "--ipc=host" will avoid shared memory issues during multiprocessing.
 
   This is the most common configuration I use. You can skip any option that you dont need.
 
@@ -27,7 +28,7 @@ Note: Use this only for development. This configuration might lead to security o
 
 - to use jupyter
 
-  `docker run -u ubuntu --gpus all -v $PWD:/home/ubuntu -p 8888:8888 -it new_image_id bash`
+  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -p 8888:8888 -it new_image_id bash`
 
   - Start Jupyter inside container:
 
@@ -45,7 +46,7 @@ Note: Use this only for development. This configuration might lead to security o
 
 - if display is needed
 
-  `docker run -u ubuntu --gpus all -v $PWD:/home/ubuntu -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -p 8888:8888 img_id bash`
+  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -p 8888:8888 img_id bash`
 
   Display might be needed for viewing outputs like images, plots etc. But I dont remember I ever using it. Kept it here for reference.
 
@@ -90,9 +91,13 @@ Note: Use this only for development. This configuration might lead to security o
 3. install sudo, vim
 
    `apt update`
+   
    `apt upgrade`
+   
    `apt install -y sudo vim wget curl locate git libglib2.0-0 libsm6 libxext6 libxrender-dev cmake libboost-all-dev libblas-dev liblapack-dev`
+   
    `python -m pip install opencv-python dlib`
+   
 4. Edit bashrc, vimrc
 5. In another terminal do
 
