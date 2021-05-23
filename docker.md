@@ -99,7 +99,7 @@ Note: Use this only for development. This configuration might lead to security o
    
    `apt upgrade`
    
-   `apt install -y sudo vim wget curl locate git libglib2.0-0 libsm6 libxext6 libxrender-dev cmake libboost-all-dev libblas-dev liblapack-dev`
+   `apt install -y sudo vim wget curl locate git gcc libglib2.0-0 libsm6 libxext6 libxrender-dev cmake libboost-all-dev libblas-dev liblapack-dev`
    
    `python -m pip install opencv-python dlib`
    
