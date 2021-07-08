@@ -10,7 +10,7 @@ Note: Use this only for development. This configuration might lead to security o
 
 - run with gpu
 
-  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -it <image_id> bash`
+  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu/<dir> [-v more:dirs] -p 8888:8888 [-p more:ports] -it <image_id> bash`
 
   Here, 
 
