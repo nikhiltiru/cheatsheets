@@ -52,7 +52,7 @@ Note: Use this only for development. This configuration might lead to security o
 
 - enter a running container as root, to install something
 
-  `docker exec -u root -t -i container_id /bin/bash`
+  `docker exec -u ubuntu -it container_id /bin/bash`
 
 ### Containers
 
