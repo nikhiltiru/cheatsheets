@@ -46,7 +46,9 @@ Note: Use this only for development. This configuration might lead to security o
 
 - if display is needed
 
-  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -p 8888:8888 img_id bash`
+  `sudo xhost +local:root`
+  
+  `docker run -u ubuntu --gpus all --ipc=host -v $PWD:/home/ubuntu -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -p 8888:8888 img_id bash`
 
   Display might be needed for viewing outputs like images, plots etc. But I dont remember I ever using it. Kept it here for reference.
 
